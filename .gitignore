@@ -1,4 +1,6 @@
+/.idea/
 /.quarto/
+/statsmodels_utils
 **/*.quarto_ipynb
 
 ### JetBrains

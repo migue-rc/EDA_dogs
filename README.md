@@ -14,7 +14,7 @@ A counter-intuitive discovery from this research is the relationship between per
 ### Top 3 Dog Traits with Most Bites
 ![Top 3 Dog Traits with Most Bites](charts/Top%203%20Dog%20Traits%20with%20Most%20Bites.png)
 
-### Top 3 Dog Traits with Least Bites
+### Top 3 Dog Traits with The Least Bites
 ![Top 3 Dog Traits with Least Bites](charts/Top%203%20Dog%20Traits%20with%20Least%20Bites.png)
 
 ### Top 3 Most Dangerous Traits
