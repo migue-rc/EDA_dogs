@@ -1,5 +1,19 @@
 [
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Dog Traits vs Bites",
+    "section": "",
+    "text": "This repository contains an Exploratory Data Analysis (EDA) exploring the relationship between various dog traits and the number of reported bites. The analysis is available in the Jupyter Notebook: dog traits vs bites.ipynb.\n\n\nA counter-intuitive discovery from this research is the relationship between perceived danger and actual bite frequency:\n\nPerception vs. Reality: Breeds that are commonly considered to be more “dangerous” actually tend to bite less frequently.\nThe “Friendly” Factor: Surprisingly, dog breeds associated with positive traits such as being confident, trainable, and friendly are the ones that account for the highest number of reported bites.\n\n\n\n\n\n\n\nTop 3 Dog Traits with Most Bites\n\n\n\n\n\n\n\n\nTop 3 Dog Traits with Least Bites\n\n\n\n\n\n\nConfident\nFriendly\nTrainable \n\n\n\n\n\nGentle\nSocial\nAthletic"
+  },
+  {
+    "objectID": "index.html#research-insights",
+    "href": "index.html#research-insights",
+    "title": "Dog Traits vs Bites",
+    "section": "",
+    "text": "A counter-intuitive discovery from this research is the relationship between perceived danger and actual bite frequency:\n\nPerception vs. Reality: Breeds that are commonly considered to be more “dangerous” actually tend to bite less frequently.\nThe “Friendly” Factor: Surprisingly, dog breeds associated with positive traits such as being confident, trainable, and friendly are the ones that account for the highest number of reported bites.\n\n\n\n\n\n\n\nTop 3 Dog Traits with Most Bites\n\n\n\n\n\n\n\n\nTop 3 Dog Traits with Least Bites\n\n\n\n\n\n\nConfident\nFriendly\nTrainable \n\n\n\n\n\nGentle\nSocial\nAthletic"
+  },
+  {
     "objectID": "dog traits vs bites.html",
     "href": "dog traits vs bites.html",
     "title": "",

@@ -8,9 +8,9 @@
 
 <meta name="author" content="Miguel R.">
 <meta name="dcterms.date" content="2026-03-19">
-<meta name="description" content="This is a documentation.">
+<meta name="description" content="exploring the relationship between various dog traits and the number of reported bites.">
 
-<title>Welcome to the Documentation</title>
+<title>Dog Traits vs Bites</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -274,8 +274,23 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#eda-dog-traits-vs-bites" id="toc-eda-dog-traits-vs-bites" class="nav-link active" data-scroll-target="#eda-dog-traits-vs-bites">EDA: Dog Traits vs Bites</a>
+  <ul class="collapse">
+  <li><a href="#research-insights" id="toc-research-insights" class="nav-link" data-scroll-target="#research-insights">Research Insights</a>
+  <ul class="collapse">
+  <li><a href="#top-3-dog-traits-with-most-bites" id="toc-top-3-dog-traits-with-most-bites" class="nav-link" data-scroll-target="#top-3-dog-traits-with-most-bites">Top 3 Dog Traits with Most Bites</a></li>
+  <li><a href="#top-3-dog-traits-with-the-least-bites" id="toc-top-3-dog-traits-with-the-least-bites" class="nav-link" data-scroll-target="#top-3-dog-traits-with-the-least-bites">Top 3 Dog Traits with The Least Bites</a></li>
+  <li><a href="#top-3-most-dangerous-traits" id="toc-top-3-most-dangerous-traits" class="nav-link" data-scroll-target="#top-3-most-dangerous-traits">Top 3 Most Dangerous Traits</a></li>
+  <li><a href="#top-3-most-safe-traits" id="toc-top-3-most-safe-traits" class="nav-link" data-scroll-target="#top-3-most-safe-traits">Top 3 Most Safe Traits</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -283,15 +298,16 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Welcome to the Documentation</h1>
+<h1 class="title">Dog Traits vs Bites</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">documentation</div>
+    <div class="quarto-category">Data Science</div>
+    <div class="quarto-category">EDA</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    This is a documentation.
+    exploring the relationship between various dog traits and the number of reported bites.
   </div>
 </div>
 
@@ -320,8 +336,55 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="eda-dog-traits-vs-bites" class="level1">
+<h1>EDA: Dog Traits vs Bites</h1>
+<p>This repository contains an Exploratory Data Analysis (EDA) exploring the relationship between various dog traits and the number of reported bites. The analysis is available in the Jupyter Notebook: <code>dog traits vs bites.ipynb</code>.</p>
+<section id="research-insights" class="level2">
+<h2 class="anchored" data-anchor-id="research-insights">Research Insights</h2>
+<p>A counter-intuitive discovery from this research is the relationship between perceived danger and actual bite frequency:</p>
+<ul>
+<li><strong>Perception vs.&nbsp;Reality:</strong> Breeds that are commonly considered to be more “dangerous” actually tend to bite less frequently.</li>
+<li><strong>The “Friendly” Factor:</strong> Surprisingly, dog breeds associated with positive traits such as being <strong>confident</strong>, <strong>trainable</strong>, and <strong>friendly</strong> are the ones that account for the highest number of reported bites.</li>
+<li><h2 id="key-findings-visualizations" class="anchored">Key Findings &amp; Visualizations</h2></li>
+</ul>
+<section id="top-3-dog-traits-with-most-bites" class="level3">
+<h3 class="anchored" data-anchor-id="top-3-dog-traits-with-most-bites">Top 3 Dog Traits with Most Bites</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="charts/Top 3 Dog Traits with Most Bites.png" class="img-fluid figure-img"></p>
+<figcaption>Top 3 Dog Traits with Most Bites</figcaption>
+</figure>
+</div>
+</section>
+<section id="top-3-dog-traits-with-the-least-bites" class="level3">
+<h3 class="anchored" data-anchor-id="top-3-dog-traits-with-the-least-bites">Top 3 Dog Traits with The Least Bites</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="charts/Top 3 Dog Traits with Least Bites.png" class="img-fluid figure-img"></p>
+<figcaption>Top 3 Dog Traits with Least Bites</figcaption>
+</figure>
+</div>
+</section>
+<section id="top-3-most-dangerous-traits" class="level3">
+<h3 class="anchored" data-anchor-id="top-3-most-dangerous-traits">Top 3 Most Dangerous Traits</h3>
+<ol type="1">
+<li><strong>Confident</strong></li>
+<li><strong>Friendly</strong></li>
+<li><strong>Trainable</strong> <img src="charts/Top 3 Most Dangerous Traits.png" class="img-fluid" alt="Top 3 Most Dangerous Traits"></li>
+</ol>
+</section>
+<section id="top-3-most-safe-traits" class="level3">
+<h3 class="anchored" data-anchor-id="top-3-most-safe-traits">Top 3 Most Safe Traits</h3>
+<ol type="1">
+<li><strong>Gentle</strong></li>
+<li><strong>Social</strong></li>
+<li><strong>Athletic</strong> <img src="charts/Top 3 Most Safe Traits.png" class="img-fluid" alt="Top 3 Most Safe Traits"></li>
+</ol>
 
 
+</section>
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -410,7 +473,7 @@ ul.task-list li input[type="checkbox"] {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/migue-rc\.github\.io\/EDA_dogs\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
