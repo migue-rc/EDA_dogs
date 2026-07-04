@@ -2,10 +2,14 @@ project:
   type: website
 
 website:
-  favicon: "https://migue-rc.github.io/favicon.ico"
+  favicon: favicon.ico
+  site-url: "https://migue-rc.github.io/EDA_dogs"
+  description: "Why the friendliest dog breeds rack up the most reported bites - an exploratory analysis about base rates."
+  open-graph: true
+  twitter-card: true
+  image: "assets/hero.jpg"
   # Creates a top navbar so users can always get back to your Hub
   navbar:
-    background: primary
     left:
       - text: "← Back to Main"
         href: "https://migue-rc.github.io"
@@ -18,8 +22,8 @@ format:
   html:
     # Loads the base theme, then any local SCSS variables
     theme:
-      light: [sketchy, custom.scss]
-      dark: [sketchy, sketchy-dark.scss]
+      light: [sketchy, sketchy-light.scss, custom.scss]
+      dark: [sketchy, sketchy-dark.scss, custom.scss]
     # Injects your live, remote CSS file for instant global updates
     highlight-style: 
       light: github
