@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Miguel R.">
-<meta name="dcterms.date" content="2026-03-19">
-<meta name="description" content="exploring the relationship between various dog traits and the number of reported bites.">
+<meta name="dcterms.date" content="2026-07-04">
+<meta name="description" content="Ranking dog traits by reported bites crowns the friendly breeds as the biters - an exploratory analysis about base rates and why raw counts mislead.">
 
-<title>Dog Traits vs Bites</title>
+<title>Aggressive Dogs Don’t Bite (Or Do They?)</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -36,7 +36,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./https://migue-rc.github.io/favicon.ico" rel="icon">
+<link href="./favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -48,9 +48,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-3f230b53dc93e4a04bf4a3505d77a42a.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-0738663c7c037cf665a86e7eb60c4439.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-9f74c3406a507f2d1f67bd7731720ed3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-0738663c7c037cf665a86e7eb60c4439.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-22e386d673eb27a037a9ab8590791d54.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-df7de8fec9041e4cf553be1fa0c04d3f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-22e386d673eb27a037a9ab8590791d54.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -82,6 +82,17 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="local-style.css">
+<meta property="og:title" content="Aggressive Dogs Don’t Bite (Or Do They?)">
+<meta property="og:description" content="Ranking dog traits by reported bites crowns the friendly breeds as the biters - an exploratory analysis about base rates and why raw counts mislead.">
+<meta property="og:image" content="https://migue-rc.github.io/EDA_dogs/charts/top-traits-most-bites.png">
+<meta property="og:image:height" content="3957">
+<meta property="og:image:width" content="3958">
+<meta name="twitter:title" content="Aggressive Dogs Don’t Bite (Or Do They?)">
+<meta name="twitter:description" content="Ranking dog traits by reported bites crowns the friendly breeds as the biters - an exploratory analysis about base rates and why raw counts mislead.">
+<meta name="twitter:image" content="https://migue-rc.github.io/EDA_dogs/charts/top-traits-most-bites.png">
+<meta name="twitter:image-height" content="3957">
+<meta name="twitter:image-width" content="3958">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -279,16 +290,14 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#eda-dog-traits-vs-bites" id="toc-eda-dog-traits-vs-bites" class="nav-link active" data-scroll-target="#eda-dog-traits-vs-bites">EDA: Dog Traits vs Bites</a>
+  <li><a href="#what-we-did" id="toc-what-we-did" class="nav-link active" data-scroll-target="#what-we-did">What We Did</a></li>
+  <li><a href="#the-headline-result" id="toc-the-headline-result" class="nav-link" data-scroll-target="#the-headline-result">The Headline Result</a>
   <ul class="collapse">
-  <li><a href="#research-insights" id="toc-research-insights" class="nav-link" data-scroll-target="#research-insights">Research Insights</a>
-  <ul class="collapse">
-  <li><a href="#top-3-dog-traits-with-most-bites" id="toc-top-3-dog-traits-with-most-bites" class="nav-link" data-scroll-target="#top-3-dog-traits-with-most-bites">Top 3 Dog Traits with Most Bites</a></li>
-  <li><a href="#top-3-dog-traits-with-the-least-bites" id="toc-top-3-dog-traits-with-the-least-bites" class="nav-link" data-scroll-target="#top-3-dog-traits-with-the-least-bites">Top 3 Dog Traits with The Least Bites</a></li>
-  <li><a href="#top-3-most-dangerous-traits" id="toc-top-3-most-dangerous-traits" class="nav-link" data-scroll-target="#top-3-most-dangerous-traits">Top 3 Most Dangerous Traits</a></li>
-  <li><a href="#top-3-most-safe-traits" id="toc-top-3-most-safe-traits" class="nav-link" data-scroll-target="#top-3-most-safe-traits">Top 3 Most Safe Traits</a></li>
+  <li><a href="#traits-with-the-most-reported-bites" id="toc-traits-with-the-most-reported-bites" class="nav-link" data-scroll-target="#traits-with-the-most-reported-bites">Traits with the most reported bites</a></li>
+  <li><a href="#traits-with-the-least-reported-bites" id="toc-traits-with-the-least-reported-bites" class="nav-link" data-scroll-target="#traits-with-the-least-reported-bites">Traits with the least reported bites</a></li>
   </ul></li>
-  </ul></li>
+  <li><a href="#the-catch-base-rates" id="toc-the-catch-base-rates" class="nav-link" data-scroll-target="#the-catch-base-rates">The Catch: Base Rates</a></li>
+  <li><a href="#what-the-data-does-support" id="toc-what-the-data-does-support" class="nav-link" data-scroll-target="#what-the-data-does-support">What the Data Does Support</a></li>
   </ul>
 </nav>
     </div>
@@ -298,7 +307,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Dog Traits vs Bites</h1>
+<h1 class="title">Aggressive Dogs Don’t Bite (Or Do They?)</h1>
   <div class="quarto-categories">
     <div class="quarto-category">Data Science</div>
     <div class="quarto-category">EDA</div>
@@ -307,7 +316,7 @@ ul.task-list li input[type="checkbox"] {
 
 <div>
   <div class="description">
-    exploring the relationship between various dog traits and the number of reported bites.
+    Ranking dog traits by reported bites crowns the friendly breeds as the biters - an exploratory analysis about base rates and why raw counts mislead.
   </div>
 </div>
 
@@ -324,7 +333,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 19, 2026</p>
+      <p class="date">July 4, 2026</p>
     </div>
   </div>
   
@@ -336,54 +345,52 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="eda-dog-traits-vs-bites" class="level1">
-<h1>EDA: Dog Traits vs Bites</h1>
-<p>This repository contains an Exploratory Data Analysis (EDA) exploring the relationship between various dog traits and the number of reported bites. The analysis is available in the Jupyter Notebook: <code>dog traits vs bites.ipynb</code>.</p>
-<section id="research-insights" class="level2">
-<h2 class="anchored" data-anchor-id="research-insights">Research Insights</h2>
-<p>A counter-intuitive discovery from this research is the relationship between perceived danger and actual bite frequency:</p>
-<ul>
-<li><strong>Perception vs.&nbsp;Reality:</strong> Breeds that are commonly considered to be more “dangerous” actually tend to bite less frequently.</li>
-<li><strong>The “Friendly” Factor:</strong> Surprisingly, dog breeds associated with positive traits such as being <strong>confident</strong>, <strong>trainable</strong>, and <strong>friendly</strong> are the ones that account for the highest number of reported bites.</li>
-<li><h2 id="key-findings-visualizations" class="anchored">Key Findings &amp; Visualizations</h2></li>
-</ul>
-<section id="top-3-dog-traits-with-most-bites" class="level3">
-<h3 class="anchored" data-anchor-id="top-3-dog-traits-with-most-bites">Top 3 Dog Traits with Most Bites</h3>
+<p>If you rank dog traits by reported bites, the “dangerous” breeds are nowhere near the top. The biters are the <em>confident</em>, <em>friendly</em>, <em>trainable</em> family dogs. This exploratory analysis walks into that trap on purpose — and then explains the way out.</p>
+<p><strong>Full analysis:</strong> <a href="./dog-traits-vs-bites.html"><code>dog-traits-vs-bites.ipynb</code></a></p>
+<section id="what-we-did" class="level2">
+<h2 class="anchored" data-anchor-id="what-we-did">What We Did</h2>
+<p>Using reported bite cases from Louisville, KY joined with breed character profiles, we normalized ~150 messy breed name variants, linked every trait to the breeds that carry it, and ranked traits by the average number of reported bites.</p>
+</section>
+<section id="the-headline-result" class="level2">
+<h2 class="anchored" data-anchor-id="the-headline-result">The Headline Result</h2>
+<section id="traits-with-the-most-reported-bites" class="level3">
+<h3 class="anchored" data-anchor-id="traits-with-the-most-reported-bites">Traits with the most reported bites</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="charts/Top 3 Dog Traits with Most Bites.png" class="img-fluid figure-img"></p>
+<p><img src="charts/top-traits-most-bites.png" class="img-fluid figure-img"></p>
 <figcaption>Top 3 Dog Traits with Most Bites</figcaption>
 </figure>
 </div>
 </section>
-<section id="top-3-dog-traits-with-the-least-bites" class="level3">
-<h3 class="anchored" data-anchor-id="top-3-dog-traits-with-the-least-bites">Top 3 Dog Traits with The Least Bites</h3>
+<section id="traits-with-the-least-reported-bites" class="level3">
+<h3 class="anchored" data-anchor-id="traits-with-the-least-reported-bites">Traits with the least reported bites</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="charts/Top 3 Dog Traits with Least Bites.png" class="img-fluid figure-img"></p>
+<p><img src="charts/top-traits-least-bites.png" class="img-fluid figure-img"></p>
 <figcaption>Top 3 Dog Traits with Least Bites</figcaption>
 </figure>
 </div>
+<p>Confident, friendly, trainable dogs “bite the most.” Gentle and social dogs “bite the least.” The scary breeds are nowhere to be seen.</p>
 </section>
-<section id="top-3-most-dangerous-traits" class="level3">
-<h3 class="anchored" data-anchor-id="top-3-most-dangerous-traits">Top 3 Most Dangerous Traits</h3>
-<ol type="1">
-<li><strong>Confident</strong></li>
-<li><strong>Friendly</strong></li>
-<li><strong>Trainable</strong> <img src="charts/Top 3 Most Dangerous Traits.png" class="img-fluid" alt="Top 3 Most Dangerous Traits"></li>
-</ol>
 </section>
-<section id="top-3-most-safe-traits" class="level3">
-<h3 class="anchored" data-anchor-id="top-3-most-safe-traits">Top 3 Most Safe Traits</h3>
-<ol type="1">
-<li><strong>Gentle</strong></li>
-<li><strong>Social</strong></li>
-<li><strong>Athletic</strong> <img src="charts/Top 3 Most Safe Traits.png" class="img-fluid" alt="Top 3 Most Safe Traits"></li>
-</ol>
+<section id="the-catch-base-rates" class="level2">
+<h2 class="anchored" data-anchor-id="the-catch-base-rates">The Catch: Base Rates</h2>
+<p>That reading is wrong — instructively wrong:</p>
+<ul>
+<li><strong>These are counts, not rates.</strong> Labradors and German Shepherds are among the most popular dogs in America; more dogs means more encounters and more reports, regardless of temperament.</li>
+<li><strong>The denominator is missing.</strong> Judging a breed’s <em>propensity</em> to bite needs bites per registered dog, which this dataset cannot provide.</li>
+<li><strong>Selection effects cut the other way.</strong> Breeds with an aggressive reputation are rarer, more regulated, and handled more cautiously — all of which suppresses their raw counts.</li>
+</ul>
+</section>
+<section id="what-the-data-does-support" class="level2">
+<h2 class="anchored" data-anchor-id="what-the-data-does-support">What the Data Does Support</h2>
+<ul>
+<li>Most reported bites come from popular, family-friendly breeds — a friendly reputation is no reason to skip supervision, especially around children.</li>
+<li>Raw bite counts are dominated by exposure, not temperament. Any “dangerous breeds” ranking built on them deserves suspicion — in either direction.</li>
+</ul>
+<p>So: aggressive dogs don’t bite… exactly as much as naive counting suggests. The full notebook shows every step, including the trap.</p>
 
 
-</section>
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -473,7 +480,7 @@ ul.task-list li input[type="checkbox"] {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/migue-rc\.github\.io\/EDA_dogs\/");
+        var filterRegex = new RegExp("https:\/\/migue-rc\.github\.io\/EDA_dogs");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
